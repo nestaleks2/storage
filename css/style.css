@@ -138,7 +138,6 @@ nav .menu__list li {
 /* Hero Section */
 main .hero {
     padding: 120px 0 80px;
-    /* background: #253638; */
     position: relative;
     overflow: hidden;
     background-image: url(../images/hero-img.jpg);
@@ -147,14 +146,24 @@ main .hero {
     background-repeat: no-repeat;
 }
 
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(37, 54, 56, 0.4);
+    z-index: 1;
+}
+
 .hero__content {
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 30px;
     align-items: center;
     position: relative;
     z-index: 2;
-    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -176,11 +185,13 @@ main .hero {
 }
 
 .hero__title {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 700;
     line-height: 1.1;
-    margin-bottom: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     color: #ffffff;
+    text-align: center;
 }
 
 .hero__highlight {
@@ -195,16 +206,15 @@ main .hero {
     display: grid;
     grid-template-columns: repeat(3, minmax(200px, 1fr));
     gap: 30px;
-    margin-bottom: 50px;
 }
 
 .hero__stat {
     text-align: center;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, .45);
     border-radius: 15px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(84, 255, 143, 0.2);
+    border: 1px solid #54FF8F;
     transition: all 0.3s ease;
     min-width: 180px;
     overflow: visible;
@@ -230,73 +240,43 @@ main .hero {
 
 .hero__stat-text {
     font-size: 0.9rem;
-    color: #B8C5C7;
-}
-
-.hero__investment {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-.hero__investment-round {
-    background: rgba(84, 255, 143, 0.1);
-    padding: 25px;
-    border-radius: 15px;
-    border: 1px solid #54FF8F;
-}
-
-.hero__investment-round h3 {
-    margin: 0 0 15px 0;
-    color: #54FF8F;
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.hero__investment-amount {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 10px;
     color: #ffffff;
 }
 
-.hero__investment-equity,
-.hero__investment-price {
-    font-size: 0.9rem;
-    color: #B8C5C7;
-    display: block;
-    margin-bottom: 5px;
+.hero__text{
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: 800;
 }
 
-.hero__investment-returns {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 25px;
-    border-radius: 15px;
-}
-
-.hero__return-item {
+.hero__investment{
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
 }
 
-.hero__return-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
+.hero__investment-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
-.hero__return-label {
-    font-size: 0.9rem;
-    color: #B8C5C7;
+.hero__investment-item img{
+    width: 30px;
+    height: 30px;
 }
 
-.hero__return-value {
+.hero__investment-item span {
+    font-size: 1.2rem;
     font-weight: 600;
-    color: #54FF8F;
 }
+
 
 .hero__cta-btn {
     background: linear-gradient(135deg, #54FF8F 0%, #42E87A 50%, #30D866 100%);
@@ -527,7 +507,7 @@ main .hero {
 }
 
 .imbalance__price-current {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     font-weight: 700;
     display: block;
     margin-bottom: 5px;
@@ -590,15 +570,23 @@ main .hero {
     background: #1a2a2c;
 }
 
+.competition__subtitle{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #B8C5C7;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
 .competition__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
     gap: 30px;
 }
 
 .competitor {
     background: rgba(255, 255, 255, 0.05);
-    padding: 30px;
+    padding: 15px;
     border-radius: 15px;
     transition: all 0.3s ease;
     border: 2px solid transparent;
@@ -650,12 +638,8 @@ main .hero {
 }
 
 .size {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #B8C5C7;
-}
-
-.price {
-    font-weight: 600;
 }
 
 .price-item--best .size,
@@ -888,7 +872,39 @@ main .hero {
     transform: translateX(3px);
 }
 
-/* Timeline hover effects */\n.timeline__item:hover .timeline__year {\n    transform: scale(1.1);\n    box-shadow: 0 15px 40px rgba(84, 255, 143, 0.6);\n}\n\n.timeline__item:hover .timeline__content {\n    border-color: #54FF8F;\n    box-shadow: 0 10px 35px rgba(84, 255, 143, 0.2);\n    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(84, 255, 143, 0.08) 100%);\n}\n\n/* Timeline content arrow */\n.timeline__content::before {\n    content: '';\n    position: absolute;\n    top: 30px;\n    width: 0;\n    height: 0;\n    border: 15px solid transparent;\n}\n\n.timeline__item:nth-child(odd) .timeline__content::before {\n    left: -30px;\n    border-right-color: rgba(84, 255, 143, 0.3);\n}\n\n.timeline__item:nth-child(even) .timeline__content::before {\n    right: -30px;\n    border-left-color: rgba(84, 255, 143, 0.3);\n}\n\n/* Financial Model Section */
+/* Timeline hover effects */
+.timeline__item:hover .timeline__year {
+    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(84, 255, 143, 0.6);
+}
+
+.timeline__item:hover .timeline__content {
+    border-color: #54FF8F;
+    box-shadow: 0 10px 35px rgba(84, 255, 143, 0.2);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(84, 255, 143, 0.08) 100%);
+}
+
+.timeline__content::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+}
+
+.timeline__item:nth-child(odd) .timeline__content::before {
+        left: -30px;
+        border-right-color: rgba(84, 255, 143, 0.3);
+}
+
+.timeline__item:nth-child(even) .timeline__content::before {
+        right: -30px;
+    
+    border-left-color: rgba(84, 255, 143, 0.3);
+}
+    
+    /* Financial Model Section */
 .financial-model {
     padding: 100px 0;
     background: #253638;
@@ -1058,21 +1074,38 @@ main .hero {
         overflow: visible;
     }
     
-    .hero__investment {
+    .competition__grid {
         grid-template-columns: 1fr;
     }
-    
     .imbalance__grid {
         grid-template-columns: 1fr;
     }
     
-    .timeline {\n        padding: 0 15px;\n    }\n    \n    .timeline::before {
-        left: 50px;\n        width: 150px;\n        background: \n            radial-gradient(circle at 30% 15%, rgba(84, 255, 143, 0.15) 0%, transparent 8%),\n            radial-gradient(circle at 30% 35%, rgba(84, 255, 143, 0.12) 0%, transparent 6%),\n            radial-gradient(circle at 30% 55%, rgba(84, 255, 143, 0.15) 0%, transparent 8%),\n            radial-gradient(circle at 30% 75%, rgba(84, 255, 143, 0.12) 0%, transparent 6%),\n            radial-gradient(circle at 30% 95%, rgba(84, 255, 143, 0.15) 0%, transparent 8%);
+    .timeline {
+                padding: 0 15px;
+}
+                    
+    .timeline::before {
+        left: 50px;
+        width: 150px;
+                background: 
+            radial-gradient(circle at 30% 15%, rgba(84, 255, 143, 0.15) 0%, transparent 8%),
+            radial-gradient(circle at 30% 35%, rgba(84, 255, 143, 0.12) 0%, transparent 6%),
+            radial-gradient(circle at 30% 55%, rgba(84, 255, 143, 0.15) 0%, transparent 8%),
+            radial-gradient(circle at 30% 75%, rgba(84, 255, 143, 0.12) 0%, transparent 6%),
+            radial-gradient(circle at 30% 95%, rgba(84, 255, 143, 0.15) 0%, transparent 8%);
         z-index: 0;
     }
     
-    .timeline::after {\n        left: 40px;\n        z-index: 1;\n    }\n    \n    .timeline__item {
-        flex-direction: row !important;\n        margin-bottom: 50px;\n        align-items: flex-start;
+    .timeline::after {
+        left: 40px;
+        z-index: 1;
+    }
+        
+    .timeline__item {
+        flex-direction: column !important;
+        margin-bottom: 50px;
+        align-items: flex-start;
     }
     
     .timeline__year {
@@ -1083,19 +1116,20 @@ main .hero {
         z-index: 3;
         border-width: 3px;
         flex-shrink: 0;
+        margin-bottom: 10px;
     }
     
-    .timeline__content {
-        margin-left: 25px;
-        margin-right: 0;
-        z-index: 2;
-        padding: 20px;
-        border-radius: 15px;
+    .timeline__item:nth-child(even) {
+        flex-direction: row-reverse;
     }
     
     .timeline__year::after {
         left: -10px !important;
         right: auto !important;
+    }
+    .timeline__content{
+        width: 100%;
+        margin: 0 10px;
     }
     
     /* Mobile Menu */
